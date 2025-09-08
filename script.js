@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initHeroCarousel();
     initTestimonialCarousel();
+    initBlogCarousel();
     initFormValidation();
 });
 
@@ -337,4 +338,82 @@ function initSmoothScroll() {
 }
 
 // Initialize smooth scroll
+
+/**
+ * Blog Carousel
+ * Handles the blog section carousel/slider functionality
+ */
+function initBlogCarousel() {
+    const track = document.querySelector('.blog-carousel-track');
+    if (!track) return;
+    
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.blog-next-btn');
+    const prevButton = document.querySelector('.blog-prev-btn');
+    const dotsNav = document.querySelector('.blog-carousel-dots');
+    const dots = Array.from(dotsNav.children);
+    
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const slideMargin = parseInt(getComputedStyle(slides[0]).marginRight) || 30;
+    const moveAmount = slideWidth + slideMargin;
+    
+    // Set initial position
+    let currentIndex = 0;
+    
+    // Arrange slides next to one another
+    slides.forEach((slide, index) => {
+        slide.style.left = index * moveAmount + 'px';
+    });
+    
+    // Move to slide function
+    const moveToSlide = (index) => {
+        if (index < 0) index = 0;
+        if (index > slides.length - 3) index = slides.length - 3;
+        
+        currentIndex = index;
+        track.style.transform = `translateX(-${moveAmount * index}px)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === Math.floor(index / 3));
+        });
+    };
+    
+    // Click events for buttons
+    nextButton.addEventListener('click', () => {
+        moveToSlide(currentIndex + 3);
+    });
+    
+    prevButton.addEventListener('click', () => {
+        moveToSlide(currentIndex - 3);
+    });
+    
+    // Click events for dots
+    dotsNav.addEventListener('click', e => {
+        const targetDot = e.target.closest('.blog-dot');
+        if (!targetDot) return;
+        
+        const targetIndex = dots.findIndex(dot => dot === targetDot) * 3;
+        moveToSlide(targetIndex);
+    });
+    
+    // Initialize first slide
+    moveToSlide(0);
+    
+    // Responsive adjustments
+    window.addEventListener('resize', () => {
+        // Recalculate dimensions
+        const newSlideWidth = slides[0].getBoundingClientRect().width;
+        const newSlideMargin = parseInt(getComputedStyle(slides[0]).marginRight) || 30;
+        const newMoveAmount = newSlideWidth + newSlideMargin;
+        
+        // Rearrange slides
+        slides.forEach((slide, index) => {
+            slide.style.left = index * newMoveAmount + 'px';
+        });
+        
+        // Update current position
+        track.style.transform = `translateX(-${newMoveAmount * currentIndex}px)`;
+    });
+}
 initSmoothScroll();
