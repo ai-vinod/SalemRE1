@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#15803d" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg-gradient)"/>
+  
+  <!-- Apartment Building Illustration -->
+  <g fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8">
+    <!-- Main Building Structure -->
+    <rect x="100" y="80" width="200" height="180" rx="2"/>
+    
+    <!-- Windows - First Row -->
+    <rect x="120" y="100" width="25" height="30" rx="2"/>
+    <rect x="160" y="100" width="25" height="30" rx="2"/>
+    <rect x="215" y="100" width="25" height="30" rx="2"/>
+    <rect x="255" y="100" width="25" height="30" rx="2"/>
+    
+    <!-- Windows - Second Row -->
+    <rect x="120" y="145" width="25" height="30" rx="2"/>
+    <rect x="160" y="145" width="25" height="30" rx="2"/>
+    <rect x="215" y="145" width="25" height="30" rx="2"/>
+    <rect x="255" y="145" width="25" height="30" rx="2"/>
+    
+    <!-- Windows - Third Row -->
+    <rect x="120" y="190" width="25" height="30" rx="2"/>
+    <rect x="160" y="190" width="25" height="30" rx="2"/>
+    <rect x="215" y="190" width="25" height="30" rx="2"/>
+    <rect x="255" y="190" width="25" height="30" rx="2"/>
+    
+    <!-- Entrance -->
+    <rect x="185" y="220" width="30" height="40" rx="2"/>
+    
+    <!-- Path -->
+    <path d="M200,260 L200,280" stroke-width="10" stroke-opacity="0.5"/>
+    
+    <!-- Trees -->
+    <circle cx="70" cy="230" r="15"/>
+    <rect x="65" y="245" width="10" height="15"/>
+    
+    <circle cx="330" cy="230" r="15"/>
+    <rect x="325" y="245" width="10" height="15"/>
+  </g>
+  
+  <!-- Property Name -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">Salem Heights</text>
+</svg>
