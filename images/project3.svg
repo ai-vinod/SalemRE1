@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg-gradient)"/>
+  
+  <!-- Garden Villa Illustration -->
+  <g fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8">
+    <!-- Main House Structure -->
+    <rect x="120" y="130" width="160" height="100" rx="2"/>
+    
+    <!-- Roof -->
+    <path d="M100,130 L200,80 L300,130 Z"/>
+    
+    <!-- Windows -->
+    <rect x="140" y="150" width="25" height="30" rx="2"/>
+    <rect x="235" y="150" width="25" height="30" rx="2"/>
+    
+    <!-- Door -->
+    <rect x="185" y="170" width="30" height="60" rx="2"/>
+    
+    <!-- Garden Elements -->
+    <ellipse cx="200" cy="260" rx="80" ry="20" fill-opacity="0.3" stroke-opacity="0.5"/>
+    
+    <!-- Trees and Plants -->
+    <circle cx="100" cy="240" r="15"/>
+    <rect x="95" y="255" width="10" height="15"/>
+    
+    <circle cx="300" cy="240" r="15"/>
+    <rect x="295" y="255" width="10" height="15"/>
+    
+    <!-- Flowers -->
+    <circle cx="150" cy="250" r="5" fill="#ffffff" fill-opacity="0.6" stroke="none"/>
+    <circle cx="170" cy="255" r="5" fill="#ffffff" fill-opacity="0.6" stroke="none"/>
+    <circle cx="230" cy="255" r="5" fill="#ffffff" fill-opacity="0.6" stroke="none"/>
+    <circle cx="250" cy="250" r="5" fill="#ffffff" fill-opacity="0.6" stroke="none"/>
+  </g>
+  
+  <!-- Property Name -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">Royal Gardens</text>
+</svg>
