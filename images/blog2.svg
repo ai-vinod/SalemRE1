@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#15803d" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="url(#bg-gradient)"/>
+  
+  <!-- Map Illustration -->
+  <g fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8">
+    <!-- Map Outline -->
+    <rect x="50" y="40" width="200" height="140" rx="5" fill="#ffffff" fill-opacity="0.1"/>
+    
+    <!-- Roads -->
+    <line x1="50" y1="110" x2="250" y2="110" stroke-width="3"/>
+    <line x1="150" y1="40" x2="150" y2="180" stroke-width="3"/>
+    
+    <!-- Areas/Zones -->
+    <rect x="60" y="50" width="80" height="50" rx="2" fill="#ffffff" fill-opacity="0.4" stroke="#ffffff" stroke-width="1"/>
+    <rect x="160" y="50" width="80" height="50" rx="2" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1"/>
+    <rect x="60" y="120" width="80" height="50" rx="2" fill="#ffffff" fill-opacity="0.3" stroke="#ffffff" stroke-width="1"/>
+    <rect x="160" y="120" width="80" height="50" rx="2" fill="#ffffff" fill-opacity="0.5" stroke="#ffffff" stroke-width="1"/>
+    
+    <!-- Location Markers -->
+    <circle cx="100" cy="75" r="5" fill="#ffffff"/>
+    <circle cx="200" cy="145" r="5" fill="#ffffff"/>
+    <circle cx="80" cy="145" r="5" fill="#ffffff"/>
+    
+    <!-- Compass -->
+    <circle cx="230" cy="60" r="10" fill="none" stroke="#ffffff" stroke-width="1"/>
+    <line x1="230" y1="50" x2="230" y2="70" stroke="#ffffff" stroke-width="1"/>
+    <line x1="220" y1="60" x2="240" y2="60" stroke="#ffffff" stroke-width="1"/>
+    <text x="230" y="55" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#ffffff">N</text>
+  </g>
+  
+  <!-- Blog Title -->
+  <text x="150" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#ffffff">Salem's Real Estate Hotspots</text>
+</svg>
