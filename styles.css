@@ -2387,6 +2387,32 @@ section {
         height: auto;
         min-height: 180px;
     }
+    
+    /* Mobile swipe indicator for all carousels */
+    .carousel-container::after,
+    .featured-carousel-container::after,
+    .blog-carousel-container::after,
+    .testimonial-carousel-container::after,
+    .why-choose-us-carousel-container::after {
+        content: 'Swipe →';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        z-index: 100;
+        animation: fadeInOut 3s ease-in-out infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+    }
 }
 
 /* Promoter CTA */

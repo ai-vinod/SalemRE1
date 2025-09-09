@@ -13,6 +13,10 @@ function initFeaturedCarousel(gridSelector, cardSelector) {
     const cards = Array.from(grid.querySelectorAll(cardSelector));
     if (cards.length <= 1) return;
     
+    // Touch swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
     // Create carousel container
     const carouselContainer = document.createElement('div');
     carouselContainer.className = 'featured-carousel-container';
@@ -117,7 +121,28 @@ function initFeaturedCarousel(gridSelector, cardSelector) {
     // Initial arrow state
     updateArrows();
     
-    // Event listeners
+    // Event listeners for arrows
     nextButton.addEventListener('click', moveToNextSlide);
     prevButton.addEventListener('click', moveToPrevSlide);
+    
+    // Touch swipe functionality for mobile
+    carouselTrack.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    carouselTrack.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance required for swipe
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left - go to next slide
+            moveToNextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right - go to previous slide
+            moveToPrevSlide();
+        }
+    }
 }

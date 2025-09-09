@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const dotsNav = document.querySelector('.blog-carousel-dots');
     const dots = Array.from(dotsNav.children);
     
+    // Touch swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
     // Set up the carousel
     const slideWidth = slides[0].getBoundingClientRect().width;
     const slideMargin = parseInt(window.getComputedStyle(slides[0]).marginRight);
@@ -97,4 +101,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set first slide as active
     slides[0].classList.add('active');
+    
+    // Touch swipe functionality for mobile
+    track.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    track.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance required for swipe
+        const currentSlide = track.querySelector('.active');
+        const currentDot = dotsNav.querySelector('.active');
+        
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left - go to next slide
+            let nextSlide = currentSlide.nextElementSibling;
+            let nextDot = currentDot.nextElementSibling;
+            
+            // If at the end, loop to the beginning
+            if (!nextSlide) {
+                nextSlide = slides[0];
+                nextDot = dots[0];
+            }
+            
+            const nextIndex = slides.findIndex(slide => slide === nextSlide);
+            
+            moveToSlide(track, currentSlide, nextSlide);
+            updateDots(currentDot, nextDot);
+            hideShowArrows(slides, prevButton, nextButton, nextIndex);
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right - go to previous slide
+            let prevSlide = currentSlide.previousElementSibling;
+            let prevDot = currentDot.previousElementSibling;
+            
+            // If at the beginning, loop to the end
+            if (!prevSlide) {
+                prevSlide = slides[slides.length - 1];
+                prevDot = dots[dots.length - 1];
+            }
+            
+            const prevIndex = slides.findIndex(slide => slide === prevSlide);
+            
+            moveToSlide(track, currentSlide, prevSlide);
+            updateDots(currentDot, prevDot);
+            hideShowArrows(slides, prevButton, nextButton, prevIndex);
+        }
+    }
 });

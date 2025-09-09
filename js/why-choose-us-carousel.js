@@ -17,6 +17,10 @@ function initWhyChooseUsCarousel() {
     const prevButton = benefitsContainer.querySelector('.why-choose-us-prev-btn');
     const nextButton = benefitsContainer.querySelector('.why-choose-us-next-btn');
     
+    // Touch swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
     // Set up the carousel
     let cardWidth = cards[0].getBoundingClientRect().width;
     let cardGap = 20; // Default gap
@@ -84,4 +88,25 @@ function initWhyChooseUsCarousel() {
     // Event listeners
     nextButton.addEventListener('click', moveToNextSlide);
     prevButton.addEventListener('click', moveToPrevSlide);
+    
+    // Touch swipe functionality for mobile
+    track.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    track.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance required for swipe
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left - go to next slide
+            moveToNextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right - go to previous slide
+            moveToPrevSlide();
+        }
+    }
 }
