@@ -9,6 +9,16 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Detect iOS device
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    
+    // Add iOS class to body if needed
+    if (isIOS) {
+        document.body.classList.add('ios-device');
+        console.log('iOS device detected');
+    }
+    
     // Initialize all components with error handling
     try {
         console.log('Initializing sticky header');
@@ -82,30 +92,62 @@ function initMobileMenu() {
     menuToggle.classList.remove('active');
     navLinks.classList.remove('active');
     document.body.classList.remove('menu-open');
-
-    // Toggle menu when clicking the menu button
-    menuToggle.addEventListener('click', function(event) {
-        // Prevent event from bubbling up to document
-        event.preventDefault();
-        event.stopPropagation();
+    
+    // Create a simple button element to replace the div for better accessibility
+    const mobileButton = document.createElement('button');
+    mobileButton.className = 'mobile-menu-button';
+    mobileButton.setAttribute('aria-label', 'Toggle navigation menu');
+    mobileButton.setAttribute('aria-expanded', 'false');
+    mobileButton.innerHTML = '<span></span><span></span><span></span>';
+    
+    // Replace the existing toggle with the button
+    menuToggle.parentNode.replaceChild(mobileButton, menuToggle);
+    
+    // Function to toggle menu state
+    function toggleMenu(e) {
+        // Prevent default behavior and stop propagation
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         
         // Toggle active classes
-        menuToggle.classList.toggle('active');
+        mobileButton.classList.toggle('active');
         navLinks.classList.toggle('active');
         document.body.classList.toggle('menu-open');
         
+        // Update aria-expanded attribute
+        const isExpanded = mobileButton.classList.contains('active');
+        mobileButton.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        
         console.log('Menu toggled, active state:', navLinks.classList.contains('active'));
-    }, false);
+    }
+
+    // Add all event listeners to the new button
+    mobileButton.addEventListener('click', toggleMenu);
+    mobileButton.addEventListener('touchstart', toggleMenu, {passive: false});
+    
+    // Fix for iOS Safari - prevent touchmove events on body when menu is open
+    document.body.addEventListener('touchmove', function(e) {
+        if (document.body.classList.contains('menu-open') && !e.target.closest('.nav-links')) {
+            e.preventDefault();
+        }
+    }, {passive: false});
+    
+    // Prevent any default touch behavior on the menu toggle
+    mobileButton.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, {passive: false});}
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-        if (!event.target.closest('.main-nav') && navLinks.classList.contains('active')) {
+        if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-toggle') && navLinks.classList.contains('active')) {
             menuToggle.classList.remove('active');
             navLinks.classList.remove('active');
             document.body.classList.remove('menu-open');
             console.log('Clicked outside, closing menu');
         }
-    }, false);
+    }, {passive: true});
 
     // Close menu when clicking on a link
     const navLinkItems = navLinks.querySelectorAll('a');
@@ -115,20 +157,39 @@ function initMobileMenu() {
             navLinks.classList.remove('active');
             document.body.classList.remove('menu-open');
             console.log('Nav link clicked, closing menu');
-        }, false);
+        }, {passive: true});
     });
     
-    // Add touchstart event for mobile devices
-    menuToggle.addEventListener('touchstart', function(event) {
+    // Add touchstart event for mobile devices with passive: false to allow preventDefault
+    menuToggle.addEventListener('touchstart', toggleMenu, {passive: false});
+    
+    // Add touchend event to ensure the menu toggle works on all mobile devices
+    menuToggle.addEventListener('touchend', function(event) {
         event.preventDefault();
         event.stopPropagation();
-        
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-        
-        console.log('Menu touched, active state:', navLinks.classList.contains('active'));
-    }, false);
+        console.log('Touch end on menu toggle');
+    }, {passive: false});
+    
+    // Prevent any default touch behavior on the menu toggle
+    menuToggle.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, {passive: false});
+    
+    // Ensure menu toggle is accessible
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+    
+    // Update aria attributes when menu state changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                const isActive = menuToggle.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            }
+        });
+    });
+    
+    observer.observe(menuToggle, { attributes: true });
 }
 
 /**
