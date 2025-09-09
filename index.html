@@ -12,7 +12,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="with-sidebar">
     <!-- Header & Navigation -->
     <header class="header">
         <div class="container header-container">
@@ -29,11 +29,12 @@
                     <span></span>
                 </button>
                 <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Promoters</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="#promoters">Promoters</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="contact-number">
@@ -50,9 +51,10 @@
                     <img src="images/banner1.svg" alt="Premium Real Estate in Salem" loading="lazy">
                     <div class="overlay">
                         <h1>Premium DTCP Approved Plots</h1>
+                        <p>Discover exclusive residential plots in Salem's prime locations with all necessary approvals</p>
                         <div class="cta-buttons">
-                            <a href="#featured-projects" class="btn btn-primary">View Premium Listings</a>
-                            <a href="#promoter-cta" class="btn btn-secondary">Book Site Visit</a>
+                            <a href="#featured-projects" class="btn btn-primary">View Projects</a>
+                            <a href="contact.html" class="btn btn-outline">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -60,9 +62,10 @@
                     <img src="images/banner2.svg" alt="Premium Land in Salem" loading="lazy">
                     <div class="overlay">
                         <h1>Salem Prime Lands - Premium Plots</h1>
+                        <p>Invest in high-value properties with excellent appreciation potential in growing neighborhoods</p>
                         <div class="cta-buttons">
-                            <a href="#featured-projects" class="btn btn-primary">Explore Offer</a>
-                            <a href="#promoter-cta" class="btn btn-secondary">Contact Sales</a>
+                            <a href="#featured-projects" class="btn btn-primary">View Projects</a>
+                            <a href="contact.html" class="btn btn-outline">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -70,9 +73,10 @@
                     <img src="images/banner3.svg" alt="Farm Land in Salem" loading="lazy">
                     <div class="overlay">
                         <h1>Premium Farm Land Opportunities</h1>
+                        <p>Own peaceful farm lands with fertile soil, natural water sources, and excellent connectivity</p>
                         <div class="cta-buttons">
-                            <a href="#featured-projects" class="btn btn-primary">View Land Details</a>
-                            <a href="#promoter-cta" class="btn btn-secondary">Schedule Site Visit</a>
+                            <a href="#featured-projects" class="btn btn-primary">View Projects</a>
+                            <a href="contact.html" class="btn btn-outline">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -89,89 +93,98 @@
         </div>
     </section>
 
-    <!-- Search & Filter Bar -->
-    <section class="search-filter">
-        <div class="container">
-            <form class="search-form">
-                <div class="search-input">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search by project name or locality" aria-label="Search">
+    <!-- Main Content with Sidebar Layout -->
+    <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Latest Blog Posts</h3>
+                <div class="sidebar-blog-posts">
+                    <div class="sidebar-blog-post">
+                        <img src="images/blog1.svg" alt="Property Documents Guide">
+                        <div class="sidebar-blog-content">
+                            <h4>Essential Property Documents Guide</h4>
+                            <p class="sidebar-blog-date">May 15, 2023</p>
+                            <a href="blog.html" class="btn btn-text">Read More</a>
+                        </div>
+                    </div>
+                    <div class="sidebar-blog-post">
+                        <img src="images/blog2.svg" alt="Salem's Real Estate Hotspots">
+                        <div class="sidebar-blog-content">
+                            <h4>Salem's Real Estate Hotspots</h4>
+                            <p class="sidebar-blog-date">April 28, 2023</p>
+                            <a href="blog.html" class="btn btn-text">Read More</a>
+                        </div>
+                    </div>
+                    <div class="sidebar-blog-post">
+                        <img src="images/blog3.svg" alt="Understanding Approvals">
+                        <div class="sidebar-blog-content">
+                            <h4>Understanding RERA and DTCP Approvals</h4>
+                            <p class="sidebar-blog-date">April 10, 2023</p>
+                            <a href="blog.html" class="btn btn-text">Read More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="filter-group">
-                    <select aria-label="Property Type">
-                        <option value="">Property Type</option>
-                        <option value="plot">Plot</option>
-                        <option value="land">Land</option>
-                        <option value="farm">Farm Land</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select aria-label="Price Range">
-                        <option value="">Price Range</option>
-                        <option value="0-30">Below 30 Lakhs</option>
-                        <option value="30-50">30-50 Lakhs</option>
-                        <option value="50-80">50-80 Lakhs</option>
-                        <option value="80-100">80 Lakhs-1 Crore</option>
-                        <option value="100+">Above 1 Crore</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select aria-label="Approvals">
-                        <option value="">Approvals</option>
-                        <option value="rera">RERA Approved</option>
-                        <option value="dtcp">DTCP Approved</option>
-                        <option value="both">RERA & DTCP</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select aria-label="Location">
-                        <option value="">Location</option>
-                        <option value="shevapet">Shevapet</option>
-                        <option value="hasthampatti">Hasthampatti</option>
-                        <option value="fiveroads">Five Roads</option>
-                        <option value="suramangalam">Suramangalam</option>
-                        <option value="airport">Near Airport</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary search-btn">Search</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Featured Promoters -->
-    <section class="featured-promoters" id="featured-promoters">
-        <div class="container">
-            <h2 class="section-title">Featured Promoters</h2>
-            <div class="promoters-grid">
-                <div class="promoter-card">
-                    <img src="images/promoter1.svg" alt="Promoter 1" loading="lazy">
-                    <h3>Green Valley Builders</h3>
-                    <a href="#" class="btn btn-outline">View Projects</a>
-                </div>
-                <div class="promoter-card">
-                    <img src="images/promoter2.svg" alt="Promoter 2" loading="lazy">
-                    <h3>Salem Prime Estates</h3>
-                    <a href="#" class="btn btn-outline">View Projects</a>
-                </div>
-                <div class="promoter-card">
-                    <img src="images/promoter3.svg" alt="Promoter 3" loading="lazy">
-                    <h3>Horizon Developers</h3>
-                    <a href="#" class="btn btn-outline">View Projects</a>
-                </div>
-                <div class="promoter-card">
-                    <img src="images/promoter4.svg" alt="Promoter 4" loading="lazy">
-                    <h3>Royal Constructions</h3>
-                    <a href="#" class="btn btn-outline">View Projects</a>
+                <div class="sidebar-view-all">
+                    <a href="blog.html" class="btn btn-outline">View All Blog Posts</a>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Quick Links</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#"><i class="fas fa-building"></i> Premium Projects</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Properties by Location</a></li>
+                    <li><a href="#"><i class="fas fa-certificate"></i> DTCP Approved</a></li>
+                    <li><a href="#"><i class="fas fa-leaf"></i> Farm Lands</a></li>
+                    <li><a href="#"><i class="fas fa-rupee-sign"></i> Budget Properties</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contact Us</h3>
+                <div class="sidebar-contact">
+                    <p><i class="fas fa-phone"></i> +91-98765-43210</p>
+                    <p><i class="fas fa-envelope"></i> info@salemrealestate.com</p>
+                    <a href="contact.html" class="btn btn-outline">Send Enquiry</a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
 
-    <!-- Featured Projects -->
-    <section class="featured-projects" id="featured-projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
+            <!-- Featured Promoters -->
+            <section class="featured-promoters" id="featured-promoters">
+                <h2 class="section-title">Featured Promoters</h2>
+                <div class="promoters-grid">
+                    <div class="promoter-card">
+                        <img src="images/promoter1.svg" alt="Promoter 1" loading="lazy">
+                        <h3>Green Valley Builders</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter2.svg" alt="Promoter 2" loading="lazy">
+                        <h3>Salem Prime Estates</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter3.svg" alt="Promoter 3" loading="lazy">
+                        <h3>Horizon Developers</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter4.svg" alt="Promoter 4" loading="lazy">
+                        <h3>Royal Constructions</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects -->
+            <section class="featured-projects" id="featured-projects">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
                         <img src="images/project1.svg" alt="Green Valley Villas" loading="lazy">
@@ -243,18 +256,16 @@
                         <p class="price"><i class="fas fa-rupee-sign"></i> 1.5 Crore onwards</p>
                         <a href="#" class="btn btn-secondary">View Details</a>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Lead Capture Section Removed - Moved to Contact Page -->
+            <!-- Lead Capture Section Removed - Moved to Contact Page -->
 
-    <!-- Why Choose Us -->
-    <section class="why-choose-us">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="benefits-container">
+            <!-- Why Choose Us -->
+            <section class="why-choose-us">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="benefits-container">
                 <div class="benefit">
                     <div class="benefit-icon">
                         <i class="fas fa-check-circle"></i>
@@ -282,64 +293,64 @@
                     </div>
                     <h3>Transparent Lead Metrics</h3>
                     <p>Track performance with detailed analytics and reporting</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <div class="client-image">
-                            <img src="images/testimonial1.svg" alt="Client 1" loading="lazy">
+            <!-- Testimonials Section -->
+            <section class="testimonials" id="testimonials">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="testimonial-carousel-container">
+                    <div class="testimonial-carousel-track">
+                        <div class="testimonial-card">
+                            <div class="testimonial-image">
+                                <img src="images/testimonial1.svg" alt="Client 1" loading="lazy">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p>"Salem Real Estate Portal helped me find my dream home in just a week! Their team was professional and understood exactly what I was looking for."</p>
+                                <div class="testimonial-author">
+                                    <h4>Rajesh Kumar</h4>
+                                    <p class="client-location">Shevapet, Salem</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="client-testimonial">
-                            <p>"Salem Real Estate Portal helped me find my dream home in just a week! Their team was professional and understood exactly what I was looking for."</p>
-                            <h4>Rajesh Kumar</h4>
-                            <p class="client-location">Shevapet, Salem</p>
+                        <div class="testimonial-card">
+                            <div class="testimonial-image">
+                                <img src="images/testimonial2.svg" alt="Client 2" loading="lazy">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p>"The property I purchased through Salem Real Estate Portal has appreciated by 30% in just two years. Their investment advice was spot on!"</p>
+                                <div class="testimonial-author">
+                                    <h4>Priya Venkatesh</h4>
+                                    <p class="client-location">Hasthampatti, Salem</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-image">
+                                <img src="images/testimonial3.svg" alt="Client 3" loading="lazy">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p>"As a first-time homebuyer, I was nervous about the process. The team at Salem Real Estate Portal guided me through every step, making it stress-free."</p>
+                                <div class="testimonial-author">
+                                    <h4>Mohammed Ismail</h4>
+                                    <p class="client-location">Five Roads, Salem</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="client-image">
-                            <img src="images/testimonial2.svg" alt="Client 2" loading="lazy">
-                        </div>
-                        <div class="client-testimonial">
-                            <p>"The property I purchased through Salem Real Estate Portal has appreciated by 30% in just two years. Their investment advice was spot on!"</p>
-                            <h4>Priya Venkatesh</h4>
-                            <p class="client-location">Hasthampatti, Salem</p>
-                        </div>
+                    <div class="testimonial-carousel-controls">
+                        <button class="testimonial-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="testimonial-next-btn"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="client-image">
-                            <img src="images/testimonial3.svg" alt="Client 3" loading="lazy">
-                        </div>
-                        <div class="client-testimonial">
-                            <p>"As a first-time homebuyer, I was nervous about the process. The team at Salem Real Estate Portal guided me through every step, making it stress-free."</p>
-                            <h4>Mohammed Ismail</h4>
-                            <p class="client-location">Five Roads, Salem</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-controls">
-                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                    </div>
-                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+            
+        </div> <!-- End of content-area -->
+    </div> <!-- End of main-content -->
 
     <!-- Blog Teaser -->
     <section class="blog-teaser" id="blog-teaser">
@@ -485,7 +496,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/blog-carousel.js"></script>
+    <script src="js/testimonial-carousel.js"></script>
 </body>
 </html>

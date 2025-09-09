@@ -12,15 +12,19 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html"><img src="images/logo.svg" alt="Salem Real Estate Logo"></a>
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Salem Real Estate Logo">
+                    <span>Salem Real Estate Portal</span>
+                </a>
             </div>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#properties">Properties</a></li>
+                    <li><a href="properties.html">Properties</a></li>
                     <li><a href="index.html#promoters">Promoters</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="contact-number">
@@ -44,7 +48,9 @@
     <!-- Blog Content -->
     <section class="blog-content">
         <div class="container">
-            <div class="blog-posts">
+            <!-- Main Blog Content -->
+            <div class="blog-main">
+                    <div class="blog-posts">
                 <div class="blog-post">
                     <div class="blog-image">
                         <img src="images/blog1.svg" alt="Property Documents Guide">
@@ -134,23 +140,36 @@
                         <a href="#" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
+                
+                <!-- Pagination -->
+                <div class="blog-pagination">
+                    <a href="#" class="pagination-prev disabled"><i class="fas fa-chevron-left"></i> Previous</a>
+                    <div class="pagination-numbers">
+                        <a href="#" class="pagination-number active">1</a>
+                        <a href="#" class="pagination-number">2</a>
+                        <a href="#" class="pagination-number">3</a>
+                    </div>
+                    <a href="#" class="pagination-next">Next <i class="fas fa-chevron-right"></i></a>
+                </div>
+                </div>
+            </div>
+            
+            <!-- Subscribe Section - Moved to separate container -->
+            <div class="container">
+                <div class="blog-subscribe-section">
+                    <h2>Subscribe to Our Blog</h2>
+                    <p>Get the latest blog posts delivered to your inbox</p>
+                    <form class="subscribe-form-horizontal">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </form>
+                </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2>Subscribe to Our Newsletter</h2>
-                <p>Stay updated with the latest property listings, market trends, and real estate news in Salem</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your Email Address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
+    <!-- Newsletter section removed to avoid duplication -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -164,7 +183,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#properties">Properties</a></li>
+                        <li><a href="properties.html">Properties</a></li>
                         <li><a href="index.html#promoters">Promoters</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>

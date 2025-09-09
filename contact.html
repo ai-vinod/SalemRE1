@@ -10,30 +10,30 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo.svg" alt="Salem Real Estate Logo">
-                    </a>
-                </div>
-                <nav class="main-nav">
-                    <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#properties">Properties</a></li>
-                        <li><a href="index.html#promoters">Promoters</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html" class="active">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <a href="tel:+919876543210" class="phone-number"><i class="fas fa-phone-alt"></i> +91 98765 43210</a>
-                    <button class="mobile-menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Salem Real Estate Logo">
+                    <span>Salem Real Estate Portal</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="index.html#promoters">Promoters</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-number">
+                <a href="tel:+919876543210"><i class="fas fa-phone-alt"></i> +91-98765-43210</a>
             </div>
         </div>
     </header>
@@ -46,76 +46,71 @@
         </div>
     </section>
 
-    <!-- Contact Information -->
-    <section class="contact-info">
+    <!-- Contact Section -->
+    <section id="contact-section" class="contact-section">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Our Office</h3>
-                    <p>123 Main Street, Five Roads<br>Salem, Tamil Nadu 636001</p>
-                </div>
-                <div class="contact-card">
-                    <div class="icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h3>Phone</h3>
-                    <p>+91 98765 43210<br>+91 98765 43211</p>
-                </div>
-                <div class="contact-card">
-                    <div class="icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>info@salemrealestate.com<br>support@salemrealestate.com</p>
-                </div>
-                <div class="contact-card">
-                    <div class="icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Working Hours</h3>
-                    <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 2:00 PM</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lead Capture Section (Moved from index.html) -->
-    <section id="lead-capture" class="lead-capture">
-        <div class="container">
-            <div class="lead-capture-content">
-                <div class="lead-form-container">
+            <div class="contact-flex-container">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
                     <h2>Get in Touch With Us</h2>
                     <p>Interested in our properties? Fill out the form below and our experts will contact you.</p>
-                    <form class="lead-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                    <h3>Contact Form</h3>
+                    <form class="lead-form contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" placeholder="Enter your email address" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <label for="phone">Your Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Your Phone Number" required>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Enter your message here..." rows="5" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>Interested In</option>
-                                <option value="residential_land">Residential Land</option>
-                                <option value="agricultural_land">Agricultural Land</option>
-                                <option value="commercial_land">Commercial Land</option>
-                                <option value="farm_land">Farm Land</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62559.16367556204!2d78.1224937!3d11.6538948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1ccf52cba0b%3A0xee9989506434cb3b!2sSalem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1654321098765!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <!-- Contact Information -->
+                <div class="contact-info-container">
+                    <h2>Contact Information</h2>
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <div class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Our Office</h3>
+                            <p>123 Main Street, Five Roads<br>Salem, Tamil Nadu 636001</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>Phone</h3>
+                            <p>+91 98765 43210<br>+91 98765 43211</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email</h3>
+                            <p>info@salemrealestate.com<br>support@salemrealestate.com</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Working Hours</h3>
+                            <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

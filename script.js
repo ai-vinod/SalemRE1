@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTestimonialCarousel();
     initBlogCarousel();
     initFormValidation();
+    initBlogPagination();
 });
 
 /**
@@ -101,6 +102,11 @@ function initHeroCarousel() {
         // Add active class to current slide and dot
         slides[index].classList.add('active');
         if (dots[index]) dots[index].classList.add('active');
+        
+        // Update position of the track for smooth sliding effect
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transition = 'transform 0.5s ease-in-out';
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
         
         currentIndex = index;
     }
@@ -364,6 +370,105 @@ function initBlogCarousel() {
     slides.forEach((slide, index) => {
         slide.style.left = index * moveAmount + 'px';
     });
+}
+
+/**
+ * Blog Pagination
+ * Handles the blog pagination functionality
+ */
+function initBlogPagination() {
+    const paginationNumbers = document.querySelectorAll('.pagination-number');
+    const prevButton = document.querySelector('.pagination-prev');
+    const nextButton = document.querySelector('.pagination-next');
+    
+    if (!paginationNumbers.length) return;
+    
+    // Add click event listeners to pagination numbers
+    paginationNumbers.forEach((number, index) => {
+        number.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all numbers
+            paginationNumbers.forEach(num => num.classList.remove('active'));
+            
+            // Add active class to clicked number
+            this.classList.add('active');
+            
+            // Update prev/next buttons based on current page
+            updatePrevNextButtons(index, paginationNumbers.length);
+        });
+    });
+    
+    // Add click event listeners to prev/next buttons
+    if (prevButton) {
+        prevButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.classList.contains('disabled')) return;
+            
+            // Find current active page
+            const currentActive = document.querySelector('.pagination-number.active');
+            const currentIndex = Array.from(paginationNumbers).indexOf(currentActive);
+            
+            if (currentIndex > 0) {
+                // Remove active class from current
+                currentActive.classList.remove('active');
+                
+                // Add active class to previous
+                paginationNumbers[currentIndex - 1].classList.add('active');
+                
+                // Update prev/next buttons
+                updatePrevNextButtons(currentIndex - 1, paginationNumbers.length);
+            }
+        });
+    }
+    
+    if (nextButton) {
+        nextButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.classList.contains('disabled')) return;
+            
+            // Find current active page
+            const currentActive = document.querySelector('.pagination-number.active');
+            const currentIndex = Array.from(paginationNumbers).indexOf(currentActive);
+            
+            if (currentIndex < paginationNumbers.length - 1) {
+                // Remove active class from current
+                currentActive.classList.remove('active');
+                
+                // Add active class to next
+                paginationNumbers[currentIndex + 1].classList.add('active');
+                
+                // Update prev/next buttons
+                updatePrevNextButtons(currentIndex + 1, paginationNumbers.length);
+            }
+        });
+    }
+    
+    // Initialize prev/next buttons state
+    updatePrevNextButtons(0, paginationNumbers.length);
+}
+
+// Helper function to update prev/next buttons state
+function updatePrevNextButtons(currentIndex, totalPages) {
+    const prevButton = document.querySelector('.pagination-prev');
+    const nextButton = document.querySelector('.pagination-next');
+    
+    if (prevButton) {
+        if (currentIndex === 0) {
+            prevButton.classList.add('disabled');
+        } else {
+            prevButton.classList.remove('disabled');
+        }
+    }
+    
+    if (nextButton) {
+        if (currentIndex === totalPages - 1) {
+            nextButton.classList.add('disabled');
+        } else {
+            nextButton.classList.remove('disabled');
+        }
+    }
+}
     
     // Move to slide function
     const moveToSlide = (index) => {

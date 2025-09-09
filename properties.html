@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - Salem Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Salem Real Estate Logo">
+                    <span>Salem Real Estate Portal</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html" class="active">Properties</a></li>
+                    <li><a href="index.html#promoters">Promoters</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-number">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 98765 43210</span>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Find Your Perfect Property</h1>
+            <p>Browse through our extensive collection of premium properties in Salem</p>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar Layout -->
+    <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="filter-container">
+                <h3 class="filter-title">Find Your Perfect Property</h3>
+                <form class="property-filter-form">
+                    <div class="search-input-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search by project name or locality" aria-label="Search" class="search-input">
+                    </div>
+                    
+                    <div class="filter-dropdown">
+                        <label for="property-type">Property Type</label>
+                        <select id="property-type" aria-label="Property Type" class="property-type-select">
+                            <option value="all">All Properties</option>
+                            <option value="plot">Plots/Land</option>
+                            <option value="farm">Farm Land</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="residential">Residential</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-dropdown">
+                        <label for="price-range">Price Range (in Lakhs)</label>
+                        <select id="price-range" aria-label="Price Range" class="price-range-select">
+                            <option value="">All Price Ranges</option>
+                            <option value="0-25">Below 25 Lakhs</option>
+                            <option value="25-50">25 - 50 Lakhs</option>
+                            <option value="50-75">50 - 75 Lakhs</option>
+                            <option value="75-100">75 - 100 Lakhs</option>
+                            <option value="100+">Above 1 Crore</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-chips">
+                        <h4>Approvals</h4>
+                        <div class="chip-container">
+                            <label class="filter-chip">
+                                <input type="checkbox" name="approval" value="rera">
+                                <span>RERA</span>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="checkbox" name="approval" value="dtcp">
+                                <span>DTCP</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-dropdown">
+                        <label for="location">Location</label>
+                        <select id="location" aria-label="Location" class="location-select">
+                            <option value="">All Locations</option>
+                            <option value="shevapet">Shevapet</option>
+                            <option value="hasthampatti">Hasthampatti</option>
+                            <option value="fiveroads">Five Roads</option>
+                            <option value="suramangalam">Suramangalam</option>
+                            <option value="airport">Near Airport</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button type="submit" class="btn btn-primary search-btn">Find Properties</button>
+                        <button type="reset" class="btn btn-outline reset-btn">Reset Filters</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Quick Links</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#"><i class="fas fa-building"></i> Premium Projects</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Properties by Location</a></li>
+                    <li><a href="#"><i class="fas fa-certificate"></i> DTCP Approved</a></li>
+                    <li><a href="#"><i class="fas fa-leaf"></i> Farm Lands</a></li>
+                    <li><a href="#"><i class="fas fa-rupee-sign"></i> Budget Properties</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contact Us</h3>
+                <div class="sidebar-contact">
+                    <p><i class="fas fa-phone"></i> +91-98765-43210</p>
+                    <p><i class="fas fa-envelope"></i> info@salemrealestate.com</p>
+                    <a href="contact.html" class="btn btn-outline">Send Enquiry</a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Properties Grid -->
+            <section class="properties-grid">
+                <h2 class="section-title">All Properties</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project1.svg" alt="Green Valley Villas" loading="lazy">
+                            <div class="project-badge">RERA Approved</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Green Valley Villas</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Shevapet, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 85 Lakhs onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project2.svg" alt="Salem Prime Lands" loading="lazy">
+                            <div class="project-badge">DTCP Approved</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Salem Prime Lands</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Hasthampatti, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 45 Lakhs onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project3.svg" alt="Horizon Heights" loading="lazy">
+                            <div class="project-badge">RERA & DTCP</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Horizon Heights</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Five Roads, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 1.2 Crore onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project4.svg" alt="Royal Meadows" loading="lazy">
+                            <div class="project-badge">Farm Land</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Royal Meadows</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Near Airport, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 25 Lakhs onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project5.svg" alt="Green Acres" loading="lazy">
+                            <div class="project-badge">Farm Land</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Green Acres</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Suramangalam, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 35 Lakhs onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/project6.svg" alt="Urban Square" loading="lazy">
+                            <div class="project-badge">DTCP Approved</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Urban Square</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Shevapet, Salem</p>
+                            <p class="price"><i class="fas fa-rupee-sign"></i> 65 Lakhs onwards</p>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Stay updated with the latest property listings, market trends, and real estate news in Salem</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.svg" alt="Salem Real Estate Logo">
+                    <p>Your trusted partner for real estate in Salem, Tamil Nadu.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="index.html#promoters">Promoters</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Salem, Tamil Nadu</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@salemrealestate.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Salem Real Estate. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
