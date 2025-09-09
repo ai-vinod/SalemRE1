@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="url(#bg-gradient)"/>
+  
+  <!-- Document Illustration -->
+  <g fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8">
+    <!-- Main Document -->
+    <rect x="60" y="40" width="120" height="150" rx="5" fill="#ffffff" fill-opacity="0.4"/>
+    
+    <!-- Document Lines -->
+    <line x1="80" y1="70" x2="160" y2="70" stroke-width="2"/>
+    <line x1="80" y1="90" x2="160" y2="90" stroke-width="2"/>
+    <line x1="80" y1="110" x2="160" y2="110" stroke-width="2"/>
+    <line x1="80" y1="130" x2="160" y2="130" stroke-width="2"/>
+    <line x1="80" y1="150" x2="160" y2="150" stroke-width="2"/>
+    
+    <!-- Stamp/Seal -->
+    <circle cx="120" cy="170" r="10" fill="#ffffff" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+    
+    <!-- Secondary Documents -->
+    <rect x="190" y="60" width="100" height="130" rx="5" fill="#ffffff" fill-opacity="0.3" transform="rotate(10, 190, 60)"/>
+    <rect x="40" y="50" width="100" height="130" rx="5" fill="#ffffff" fill-opacity="0.2" transform="rotate(-5, 40, 50)"/>
+  </g>
+  
+  <!-- Blog Title -->
+  <text x="150" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#ffffff">Property Documents Guide</text>
+</svg>

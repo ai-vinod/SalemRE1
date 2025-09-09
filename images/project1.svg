@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg-gradient)"/>
+  
+  <!-- Villa Illustration -->
+  <g fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8">
+    <!-- Main House Structure -->
+    <rect x="100" y="120" width="200" height="120" rx="2"/>
+    
+    <!-- Roof -->
+    <path d="M80,120 L200,60 L320,120 Z"/>
+    
+    <!-- Windows -->
+    <rect x="120" y="150" width="30" height="40" rx="2"/>
+    <rect x="170" y="150" width="30" height="40" rx="2"/>
+    <rect x="250" y="150" width="30" height="40" rx="2"/>
+    
+    <!-- Door -->
+    <rect x="200" y="180" width="40" height="60" rx="2"/>
+    
+    <!-- Path -->
+    <path d="M220,240 L220,270" stroke-width="10" stroke-opacity="0.5"/>
+    
+    <!-- Trees -->
+    <circle cx="70" cy="200" r="20"/>
+    <rect x="65" y="220" width="10" height="20"/>
+    
+    <circle cx="330" cy="200" r="20"/>
+    <rect x="325" y="220" width="10" height="20"/>
+  </g>
+  
+  <!-- Property Name -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">Green Valley Villas</text>
+</svg>

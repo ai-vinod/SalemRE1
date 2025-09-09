@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="55" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2"/>
+  
+  <!-- Building Icon -->
+  <g transform="translate(20, 20)">
+    <!-- Horizon Line -->
+    <line x1="10" y1="50" x2="90" y2="50" stroke="#0ea5e9" stroke-width="2"/>
+    
+    <!-- Buildings Silhouette -->
+    <path d="M10,50 L10,35 L20,35 L20,25 L30,25 L30,40 L40,40 L40,20 L50,20 L50,30 L60,30 L60,15 L70,15 L70,35 L80,35 L80,45 L90,45 L90,50 Z" fill="#0ea5e9" fill-opacity="0.2" stroke="#0ea5e9" stroke-width="2"/>
+    
+    <!-- Sun/Circle -->
+    <circle cx="75" cy="25" r="10" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Company Name -->
+  <text x="60" y="95" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#1f2937">HORIZON DEVELOPERS</text>
+</svg>
