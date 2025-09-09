@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Salem Real Estate Portal - Discover Salem's Top Land & Home Builders">
+    <title>Salem Real Estate Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/Logo.png" alt="Salem Real Estate Portal Logo">
+                    <span>Salem Real Estate Portal</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="#promoters">Promoters</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Phone number removed to make nav bar less cramped -->
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-slide active">
+                    <img src="images/banner1.png" alt="Premium Real Estate in Salem" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/banner2.png" alt="Premium Land in Salem" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/banner3.png" alt="Farm Land in Salem" loading="lazy">
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-prev" aria-label="Previous slide">&lt;</button>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                </div>
+                <button class="carousel-next" aria-label="Next slide">&gt;</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Inline carousel script for immediate execution -->
+    <script>
+        (function() {
+            // Immediately execute carousel initialization
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.carousel-prev');
+            const nextButton = document.querySelector('.carousel-next');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (!track || slides.length === 0) return;
+            
+            console.log('Hero carousel: Found elements', { track, slides: slides.length });
+
+            let currentIndex = 0;
+            let interval;
+            const autoPlayDelay = 3000; // 3 seconds (changed from 2 seconds)
+
+            // Function to move to a specific slide
+            function moveToSlide(index) {
+                // Ensure index is within bounds
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                
+                // Remove active class from all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Add active class to current slide
+                slides[index].classList.add('active');
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                currentIndex = index;
+                console.log('Hero carousel: Moved to slide', currentIndex);
+            }
+
+            // Set up auto-rotation
+            function startAutoPlay() {
+                // Clear any existing interval first
+                if (interval) {
+                    clearInterval(interval);
+                }
+                
+                interval = setInterval(() => {
+                    moveToSlide(currentIndex + 1);
+                }, autoPlayDelay);
+                console.log('Hero carousel: Auto-play started');
+            }
+
+            function stopAutoPlay() {
+                if (interval) {
+                    clearInterval(interval);
+                    interval = null;
+                    console.log('Hero carousel: Auto-play stopped');
+                }
+            }
+
+            // Set up navigation buttons
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    moveToSlide(currentIndex - 1);
+                    stopAutoPlay();
+                    startAutoPlay(); // Restart the timer
+                });
+            }
+            
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    moveToSlide(currentIndex + 1);
+                    stopAutoPlay();
+                    startAutoPlay(); // Restart the timer
+                });
+            }
+            
+            // Set up dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    moveToSlide(index);
+                    stopAutoPlay();
+                    startAutoPlay(); // Restart the timer
+                });
+            });
+
+            // Touch swipe variables
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // Touch swipe functionality for mobile
+            track.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoPlay();
+            }, {passive: true});
+            
+            track.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoPlay(); // Restart auto-play after swipe
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const swipeThreshold = 50; // Minimum distance required for swipe
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - go to next slide
+                    moveToSlide(currentIndex + 1);
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - go to previous slide
+                    moveToSlide(currentIndex - 1);
+                }
+            }
+            
+            // Pause auto-rotation when hovering over carousel
+            track.addEventListener('mouseenter', stopAutoPlay);
+            track.addEventListener('mouseleave', startAutoPlay);
+
+            // Initialize the first slide
+            moveToSlide(0);
+            
+            // Start the carousel
+            startAutoPlay();
+            
+            // Force start after a short delay (backup)
+            setTimeout(startAutoPlay, 500);
+            
+            console.log('Hero carousel: Initialization complete');
+        })();
+    </script>
+
+    <!-- Main Content -->
+    <div class="main-content-full">
+        <!-- Content Section -->
+        <div class="content-section">
+
+            <!-- Featured Promoters -->
+            <section class="featured-promoters" id="featured-promoters">
+                <h2 class="section-title">Featured Promoters</h2>
+                <div class="promoters-grid">
+                    <div class="promoter-card">
+                        <img src="images/promoter1.jpg" alt="Promoter 1" loading="lazy">
+                        <h3>Green Valley Builders</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter2.jpg" alt="Promoter 2" loading="lazy">
+                        <h3>Salem Prime Estates</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter3.jpg" alt="Promoter 3" loading="lazy">
+                        <h3>Horizon Developers</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                    <div class="promoter-card">
+                        <img src="images/promoter4.jpg" alt="Promoter 4" loading="lazy">
+                        <h3>Royal Constructions</h3>
+                        <a href="#" class="btn btn-outline">View Projects</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects -->
+            <section class="featured-projects" id="featured-projects">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project1.jpg" alt="Green Valley Villas" loading="lazy">
+                        <div class="project-badge">RERA Approved</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Green Valley Villas</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Shevapet, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 85 Lakhs onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project2.jpg" alt="Salem Heights" loading="lazy">
+                        <div class="project-badge">DTCP Approved</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Salem Heights</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Five Roads, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 45 Lakhs onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project3.jpg" alt="Royal Gardens" loading="lazy">
+                        <div class="project-badge">RERA & DTCP</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Royal Gardens</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Hasthampatti, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 1.2 Crore onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project4.jpg" alt="Horizon Apartments" loading="lazy">
+                        <div class="project-badge">RERA Approved</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Horizon Apartments</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Junction Main Road, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 55 Lakhs onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project5.jpg" alt="Lakeside Residences" loading="lazy">
+                        <div class="project-badge">DTCP Approved</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Lakeside Residences</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Suramangalam, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 75 Lakhs onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project6.jpg" alt="Urban Oasis" loading="lazy">
+                        <div class="project-badge">RERA Approved</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Urban Oasis</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Fairlands, Salem</p>
+                        <p class="price"><i class="fas fa-rupee-sign"></i> 95 Lakhs onwards</p>
+                        <a href="#" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </section>
+
+            <!-- Lead Capture Section Removed - Moved to Contact Page -->
+
+            <!-- Why Choose Us -->
+            <section class="why-choose-us">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <div class="why-choose-us-carousel-container">
+                        <div class="why-choose-us-carousel-track">
+                            <div class="benefit">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h3>Verified RERA/DTCP Promoters</h3>
+                                <p>All promoters on our platform are verified for legal compliance</p>
+                            </div>
+                            <div class="benefit">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <h3>Dedicated Promoter Pages</h3>
+                                <p>Detailed profiles for each promoter with their complete portfolio</p>
+                            </div>
+                            <div class="benefit">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h3>Multi-platform Promotion</h3>
+                                <p>Your projects get visibility across web, social media, and print</p>
+                            </div>
+                            <div class="benefit">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Transparent Lead Metrics</h3>
+                                <p>Track performance with detailed analytics and reporting</p>
+                            </div>
+                        </div>
+                        <div class="featured-carousel-controls">
+                            <button class="featured-prev-btn why-choose-us-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="featured-next-btn why-choose-us-next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Teaser -->
+            <section class="blog-teaser" id="blog-teaser">
+                <div class="container">
+                    <h2 class="section-title">Latest from Our Blog</h2>
+                    <div class="blog-carousel-container">
+                        <div class="blog-carousel-track">
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog1.svg" alt="Property Documents Guide" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">May 15, 2023</div>
+                                    <h3>Essential Property Documents Guide</h3>
+                                    <p>Understanding the critical documents needed when buying property in Salem - from sale deeds to encumbrance certificates.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog2.svg" alt="Salem's Real Estate Hotspots" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">April 28, 2023</div>
+                                    <h3>Salem's Real Estate Hotspots</h3>
+                                    <p>Discover the emerging neighborhoods in Salem with the highest appreciation potential and investment returns.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog3.svg" alt="Understanding Approvals" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">April 10, 2023</div>
+                                    <h3>Understanding RERA and DTCP Approvals</h3>
+                                    <p>A comprehensive guide to regulatory approvals and why they matter when purchasing property in Salem.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog4.svg" alt="Home Loan Guide" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">March 22, 2023</div>
+                                    <h3>Home Loan Guide for Buyers</h3>
+                                    <p>Navigate through the best home loan options, interest rates, and eligibility criteria for property purchases in Salem.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog5.svg" alt="Interior Design Trends" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">March 5, 2023</div>
+                                    <h3>Interior Design Trends for 2023</h3>
+                                    <p>Explore the latest interior design trends to transform your new Salem property into a stylish and modern home.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img src="images/blog6.svg" alt="Real Estate Investment Returns" loading="lazy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-date">February 18, 2023</div>
+                                    <h3>Real Estate Investment Returns</h3>
+                                    <p>Analysis of Salem's real estate market performance and projected returns for different property types and locations.</p>
+                                    <a href="blog.html" class="btn btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-carousel-controls">
+                            <button class="blog-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <div class="blog-carousel-dots">
+                                <span class="blog-dot active" data-slide="0"></span>
+                                <span class="blog-dot" data-slide="1"></span>
+                                <span class="blog-dot" data-slide="2"></span>
+                                <span class="blog-dot" data-slide="3"></span>
+                            </div>
+                            <button class="blog-next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="blog-cta">
+                        <a href="blog.html" class="btn btn-outline">Read Our Blog</a>
+                    </div>
+                </div>
+            </section>
+            
+        </div> <!-- End of content-area -->
+    </div> <!-- End of main-content -->
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-carousel-container">
+                <div class="testimonial-carousel-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="images/testimonial1.svg" alt="Client 1" loading="lazy">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"Salem Real Estate Portal helped me find my dream home in just a week! Their team was professional and understood exactly what I was looking for."</p>
+                            <div class="testimonial-author">
+                                <h4>Rajesh Kumar</h4>
+                                <p class="client-location">Shevapet, Salem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="images/testimonial2.svg" alt="Client 2" loading="lazy">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The property I purchased through Salem Real Estate Portal has appreciated by 30% in just two years. Their investment advice was spot on!"</p>
+                            <div class="testimonial-author">
+                                <h4>Priya Venkatesh</h4>
+                                <p class="client-location">Hasthampatti, Salem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="images/testimonial3.svg" alt="Client 3" loading="lazy">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"As a first-time homebuyer, I was nervous about the process. The team at Salem Real Estate Portal guided me through every step, making it stress-free."</p>
+                            <div class="testimonial-author">
+                                <h4>Mohammed Ismail</h4>
+                                <p class="client-location">Five Roads, Salem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-carousel-controls">
+                    <button class="testimonial-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-carousel-dots">
+                        <span class="testimonial-dot active" data-slide="0"></span>
+                        <span class="testimonial-dot" data-slide="1"></span>
+                        <span class="testimonial-dot" data-slide="2"></span>
+                    </div>
+                    <button class="testimonial-next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promoter CTA -->
+    <section class="promoter-cta" id="promoter-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Are You a Property Developer or Builder?</h2>
+                <p>Join Salem's premier real estate platform and showcase your projects to thousands of potential buyers.</p>
+                <a href="#" class="btn btn-primary">List Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Logo.png" alt="Salem Real Estate Logo">
+                    <h3>Salem Real Estate</h3>
+                    <p>Your trusted partner for real estate in Salem, Tamil Nadu.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Property Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-building"></i> Premium Projects</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Properties by Location</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> DTCP Approved</a></li>
+                        <li><a href="#"><i class="fas fa-leaf"></i> Farm Lands</a></li>
+                        <li><a href="#"><i class="fas fa-rupee-sign"></i> Budget Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="index.html#promoters">Promoters</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Salem, Tamil Nadu</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@salemrealestate.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Salem Real Estate. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mobile-menu.js"></script>
+    <script src="script.js"></script>
+    <script src="js/blog-carousel.js"></script>
+    <script src="js/testimonial-carousel.js"></script>
+    <script src="js/featured-sections-carousel.js"></script>
+    <script src="js/why-choose-us-carousel.js"></script>
+</body>
+</html>
